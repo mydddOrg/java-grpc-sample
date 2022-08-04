@@ -17,6 +17,7 @@ services:
     image: lingen/java-grpc-sample-rest:1
     deploy:
       replicas: 2
+
     ports:
       - "8080:8080"
     networks:

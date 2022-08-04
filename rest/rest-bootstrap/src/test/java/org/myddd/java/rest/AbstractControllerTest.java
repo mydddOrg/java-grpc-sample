@@ -1,9 +1,17 @@
 package org.myddd.java.rest;
 
+import io.grpc.ManagedChannel;
+import io.grpc.ManagedChannelBuilder;
+import io.grpc.Server;
+import io.grpc.netty.NettyServerBuilder;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.myddd.domain.InstanceFactory;
 import org.myddd.ioc.spring.SpringInstanceProvider;
+import org.myddd.java.application.UserApplicationGrpcImpl;
+import org.myddd.java.distributed.application.DistributedIdApplicationGrpcImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,6 +23,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import javax.inject.Inject;
+import java.io.IOException;
 import java.util.UUID;
 
 @ExtendWith(SpringExtension.class)
@@ -31,6 +40,29 @@ public abstract class AbstractControllerTest {
 
     @Inject
     public ApplicationContext applicationContext;
+
+
+    private final static int PORT = 8081;
+
+    private static Server server;
+
+    protected static ManagedChannel managedChannel;
+
+    @BeforeAll
+    public static void beforeAll() throws IOException {
+        server = NettyServerBuilder.forPort(PORT)
+                .addService(new DistributedIdApplicationGrpcImpl())
+                .addService(new UserApplicationGrpcImpl())
+                .build();
+        server.start();
+
+        managedChannel = ManagedChannelBuilder.forAddress("127.0.0.1", PORT).usePlaintext().build();
+    }
+
+    @AfterAll
+    public static void afterAll(){
+        server.shutdown();
+    }
 
     @BeforeEach
     public void beforeClass(){

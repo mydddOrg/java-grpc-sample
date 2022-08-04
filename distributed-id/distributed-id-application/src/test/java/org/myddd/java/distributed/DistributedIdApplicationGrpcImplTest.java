@@ -53,4 +53,10 @@ public class DistributedIdApplicationGrpcImplTest {
         var distributedIdApplicationStub = DistributedIdApplicationGrpc.newBlockingStub(managedChannel);
         Assertions.assertNotNull(distributedIdApplicationStub.distributedId(Empty.getDefaultInstance()));
     }
+
+    @Test
+    void hostIp(){
+        var distributedIdApplicationStub = DistributedIdApplicationGrpc.newBlockingStub(managedChannel);
+        Assertions.assertNotNull(distributedIdApplicationStub.hostIp(Empty.getDefaultInstance()));
+    }
 }

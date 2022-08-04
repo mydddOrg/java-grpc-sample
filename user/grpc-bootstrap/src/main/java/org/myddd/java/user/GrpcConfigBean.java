@@ -12,7 +12,11 @@ import org.springframework.context.annotation.Configuration;
 public class GrpcConfigBean {
 
     //在分布式部署中，每个服务都可以使用同一个端口，可以固定
-    private static ManagedChannel managedChannel = ManagedChannelBuilder.forTarget("dns:///distribute:8081").usePlaintext().build();
+    private static ManagedChannel managedChannel = ManagedChannelBuilder
+            .forTarget("dns:///distribute:8081")
+            .defaultLoadBalancingPolicy("round_robin")
+            .usePlaintext()
+            .build();
 
     @Bean
     IDGenerate idGenerate(){

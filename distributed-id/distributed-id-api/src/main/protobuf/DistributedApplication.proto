@@ -10,4 +10,6 @@ package org.myddd.java.distributed.api;
 
 service DistributedIdApplication {
   rpc distributedId(google.protobuf.Empty) returns (google.protobuf.Int64Value) {}
+
+  rpc hostIp(google.protobuf.Empty) returns (google.protobuf.StringValue) {}
 }
