@@ -1,0 +1,26 @@
+version: "3.9"
+
+services:
+  distributed:
+    image: lingen/java-grpc-sample-distributed:1
+    deploy:
+      replicas: 1
+    networks:
+      - java-grpc
+  user:
+    image: lingen/java-grpc-sample-user:1
+    deploy:
+      replicas: 2
+    networks:
+      - java-grpc
+  rest:
+    image: lingen/java-grpc-sample-rest:1
+    deploy:
+      replicas: 2
+    ports:
+      - "8080:8080"
+    networks:
+      - java-grpc
+networks:
+  java-grpc:
+    name: java-grpc
