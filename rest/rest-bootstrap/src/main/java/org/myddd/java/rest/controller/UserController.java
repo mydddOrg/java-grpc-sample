@@ -16,7 +16,7 @@ public class UserController extends AbstractController {
 
     @PostMapping("/users")
     ResponseEntity<UserVO> createUser(@RequestBody UserVO userVO){
-        var userApplicationStub = UserApplicationGrpc.newBlockingStub(getManagedChannel());
+        var userApplicationStub = UserApplicationGrpc.newBlockingStub(getUserManagedChannel());
         var created = userApplicationStub.createUser(userVO.toUserDto());
         return ResponseEntity.ok(UserVO.of(created));
     }

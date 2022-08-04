@@ -14,7 +14,7 @@ public class HostController extends AbstractController{
 
     @GetMapping("/host")
     ResponseEntity<String> hostIp(){
-        var distributedIdApplicationBlockingStub = DistributedIdApplicationGrpc.newBlockingStub(getManagedChannel());
+        var distributedIdApplicationBlockingStub = DistributedIdApplicationGrpc.newBlockingStub(getDistributeManagerChannel());
         var hostIp = distributedIdApplicationBlockingStub.hostIp(Empty.getDefaultInstance());
         return ResponseEntity.ok(hostIp.getValue());
     }

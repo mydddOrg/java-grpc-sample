@@ -4,7 +4,6 @@ import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.Server;
 import io.grpc.netty.NettyServerBuilder;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -24,6 +23,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import javax.inject.Inject;
 import java.io.IOException;
+import java.util.Objects;
 import java.util.UUID;
 
 @ExtendWith(SpringExtension.class)
@@ -50,18 +50,15 @@ public abstract class AbstractControllerTest {
 
     @BeforeAll
     public static void beforeAll() throws IOException {
-        server = NettyServerBuilder.forPort(PORT)
-                .addService(new DistributedIdApplicationGrpcImpl())
-                .addService(new UserApplicationGrpcImpl())
-                .build();
-        server.start();
+        if(Objects.isNull(server)){
+            server = NettyServerBuilder.forPort(PORT)
+                    .addService(new DistributedIdApplicationGrpcImpl())
+                    .addService(new UserApplicationGrpcImpl())
+                    .build();
+            server.start();
 
-        managedChannel = ManagedChannelBuilder.forAddress("127.0.0.1", PORT).usePlaintext().build();
-    }
-
-    @AfterAll
-    public static void afterAll(){
-        server.shutdown();
+            managedChannel = ManagedChannelBuilder.forAddress("127.0.0.1", PORT).usePlaintext().build();
+        }
     }
 
     @BeforeEach
@@ -76,8 +73,7 @@ public abstract class AbstractControllerTest {
     protected HttpEntity<String> createHttpEntityFromString(String json) {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        HttpEntity<String> entity = new HttpEntity<>(json, headers);
-        return entity;
+        return new HttpEntity<>(json, headers);
     }
 
     protected HttpEntity createEmptyHttpEntity(){

@@ -19,16 +19,29 @@ public class AbstractController {
         return properties;
     }
 
-    private static ManagedChannel managedChannel;
+    private static ManagedChannel userManagedChannel;
 
-    protected static ManagedChannel getManagedChannel(){
-        if(Objects.isNull(managedChannel)){
-            managedChannel = ManagedChannelBuilder.
+    protected static ManagedChannel getUserManagedChannel(){
+        if(Objects.isNull(userManagedChannel)){
+            userManagedChannel = ManagedChannelBuilder.
                     forTarget(getProperties().getUserGrpcAddress())
                     .defaultLoadBalancingPolicy("round_robin")
                     .usePlaintext()
                     .build();
         }
-        return managedChannel;
+        return userManagedChannel;
+    }
+
+    private static ManagedChannel distributeManagerChannel;
+
+    protected static ManagedChannel getDistributeManagerChannel(){
+        if(Objects.isNull(distributeManagerChannel)){
+            distributeManagerChannel = ManagedChannelBuilder.
+                    forTarget(getProperties().getDistributeGrpcAddress())
+                    .defaultLoadBalancingPolicy("round_robin")
+                    .usePlaintext()
+                    .build();
+        }
+        return distributeManagerChannel;
     }
 }
