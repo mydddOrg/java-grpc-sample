@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
+
+option java_multiple_files = true;
+option java_package = "org.myddd.java.user.api";
+option java_outer_classname = "UserApplicationProto";
+package org.myddd.java.user.api;
+
+service UserApplication {
+  rpc createUser(UserDto) returns (UserDto);
+  rpc searchUser(SearchUserDto) returns(PageUserDto);
+}
+
+message UserDto {
+  int64 id = 1;
+  string userId = 2;
+  string name = 3;
+  string email = 4;
+  string phone = 5;
+}
+
+message PageUserDto {
+  int32 pageSize = 1;
+  int64 start = 2;
+  int64 total = 3;
+  repeated UserDto users = 4;
+}
+
+message SearchUserDto {
+  int32 page = 1;
+  int32 pageSize = 2;
+  string search = 3;
+}
