@@ -16,12 +16,13 @@ dependencies {
     implementation("org.myddd:myddd-ioc-spring:${rootProject.extra["myddd_version"]}")
     implementation("org.myddd:myddd-persistence-jpa:${rootProject.extra["myddd_version"]}")
 
-    implementation("org.jboss.spec.javax.transaction:jboss-transaction-api_1.2_spec:1.1.1.Final")
+    implementation("jakarta.transaction:jakarta.transaction-api:${rootProject.extra["transaction-api"]}")
 
     testImplementation(project(":user:infra"))
     testImplementation(project(":distributed-id:distributed-id-api"))
     testImplementation(project(":distributed-id:distributed-id-application"))
-    testImplementation("io.grpc:grpc-netty:1.48.0")
+    testImplementation("io.grpc:grpc-netty:${rootProject.extra["grpc-version"]}")
+
 
 }
 sonarqube {

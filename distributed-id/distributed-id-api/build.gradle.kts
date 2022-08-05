@@ -11,12 +11,12 @@ version = rootProject.extra["projectVersion"]!!
 
 
 dependencies {
-    api("io.grpc:grpc-kotlin-stub:1.3.0")
-    api("io.grpc:grpc-protobuf:1.48.0")
-    api("com.google.protobuf:protobuf-kotlin:3.21.3")
+    api("io.grpc:grpc-protobuf:${rootProject.extra["grpc-version"]}")
+    api("io.grpc:grpc-stub:${rootProject.extra["grpc-version"]}")
 
     implementation("org.myddd:myddd-utils:${rootProject.extra["myddd_version"]}")
-    implementation("javax.transaction:transaction-api:1.1")
+    implementation("javax.annotation:javax.annotation-api:${rootProject.extra["annotation-api"]}")
+
 }
 
 sourceSets.main {
@@ -25,14 +25,11 @@ sourceSets.main {
 
 protobuf {
     protoc {
-        artifact = "com.google.protobuf:protoc:3.21.3"
+        artifact = "com.google.protobuf:protoc:${rootProject.extra["protobuf"]}"
     }
     plugins {
         id("grpc") {
-            artifact = "io.grpc:protoc-gen-grpc-java:1.48.0"
-        }
-        id("grpckt") {
-            artifact = "io.grpc:protoc-gen-grpc-kotlin:1.3.0:jdk8@jar"
+            artifact = "io.grpc:protoc-gen-grpc-java:${rootProject.extra["grpc-version"]}"
         }
     }
     generateProtoTasks {

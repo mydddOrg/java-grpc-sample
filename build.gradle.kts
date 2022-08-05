@@ -26,11 +26,15 @@ extra["myddd_version"] = "0.3.2-ALPHA"
 extra["h2_version"] = "2.1.214"
 extra["protobuf-java"] = "3.19.1"
 extra["annotation-api"] = "1.3.2"
+extra["transaction-api"] = "1.3.3"
 extra["mysql_jdbc"] = "8.0.26"
 extra["mariadb-java-client"] = "3.0.3"
 extra["guava.version"] = "31.1-jre"
 extra["mockito.version"] = "4.3.1"
 extra["log4j-version"] = "2.17.2"
+
+extra["grpc-version"] = "1.48.1"
+extra["protobuf"] = "3.21.4"
 
 group = "org.myddd.java.micro"
 version = extra["projectVersion"]!!

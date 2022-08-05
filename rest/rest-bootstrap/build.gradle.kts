@@ -23,7 +23,7 @@ dependencies {
 
     implementation("org.myddd:myddd-rest-advice:${rootProject.extra["myddd_version"]}")
 
-    implementation("io.grpc:grpc-netty:1.48.0")
+    implementation("io.grpc:grpc-netty:${rootProject.extra["grpc-version"]}")
     implementation("com.google.code.gson:gson:2.9.0")
 
     implementation("javax.xml.bind:jaxb-api:2.3.0")
@@ -32,9 +32,8 @@ dependencies {
     implementation("javax.activation:activation:1.1.1")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test:${rootProject.extra["spring.boot"]}")
-    implementation("com.h2database:h2:${rootProject.extra["h2_version"]}")
-    testImplementation("org.jboss.spec.javax.transaction:jboss-transaction-api_1.2_spec:1.1.1.Final")
-
+    testImplementation("com.h2database:h2:${rootProject.extra["h2_version"]}")
+    testImplementation("jakarta.transaction:jakarta.transaction-api:${rootProject.extra["transaction-api"]}")
     testImplementation(project(":distributed-id:distributed-id-application"))
     testImplementation(project(":user:application"))
     testImplementation(project(":user:infra"))

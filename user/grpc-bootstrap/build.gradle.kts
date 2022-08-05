@@ -30,13 +30,10 @@ dependencies {
     implementation("org.glassfish.jaxb:jaxb-runtime:2.3.6")
     implementation("javax.activation:activation:1.1.1")
 
-    implementation("io.grpc:grpc-netty:1.48.0")
-
+    implementation("io.grpc:grpc-netty:${rootProject.extra["grpc-version"]}")
     implementation("com.h2database:h2:${rootProject.extra["h2_version"]}")
-
 
     testImplementation("org.springframework.boot:spring-boot-starter-test:${rootProject.extra["spring.boot"]}")
     testImplementation("com.h2database:h2:${rootProject.extra["h2_version"]}")
-    testImplementation("org.jboss.spec.javax.transaction:jboss-transaction-api_1.2_spec:1.1.1.Final")
-
+    testImplementation("jakarta.transaction:jakarta.transaction-api:${rootProject.extra["transaction-api"]}")
 }
