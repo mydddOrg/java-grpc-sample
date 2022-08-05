@@ -3,8 +3,8 @@ package org.myddd.java.application;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.myddd.java.AbstractTest;
-import org.myddd.java.api.UserApplication;
 import org.myddd.java.user.api.SearchUserDto;
+import org.myddd.java.user.api.UserApplication;
 
 import javax.inject.Inject;
 

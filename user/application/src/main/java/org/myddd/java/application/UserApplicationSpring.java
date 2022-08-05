@@ -1,10 +1,10 @@
 package org.myddd.java.application;
 
-import org.myddd.java.api.UserApplication;
 import org.myddd.java.application.assembler.UserAssembler;
 import org.myddd.java.domain.User;
 import org.myddd.java.user.api.PageUserDto;
 import org.myddd.java.user.api.SearchUserDto;
+import org.myddd.java.user.api.UserApplication;
 import org.myddd.java.user.api.UserDto;
 import org.myddd.querychannel.QueryChannelService;
 

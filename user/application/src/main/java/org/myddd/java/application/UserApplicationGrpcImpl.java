@@ -2,11 +2,7 @@ package org.myddd.java.application;
 
 import io.grpc.stub.StreamObserver;
 import org.myddd.domain.InstanceFactory;
-import org.myddd.java.api.UserApplication;
-import org.myddd.java.user.api.PageUserDto;
-import org.myddd.java.user.api.SearchUserDto;
-import org.myddd.java.user.api.UserApplicationGrpc;
-import org.myddd.java.user.api.UserDto;
+import org.myddd.java.user.api.*;
 
 import java.util.Objects;
 

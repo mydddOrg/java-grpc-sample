@@ -20,6 +20,7 @@ dependencies {
 
 sourceSets.main {
     proto.srcDir("src/main/protobuf")
+    java.srcDir("build/generated/proto/main/myddd-grpc")
 }
 
 protobuf {
@@ -30,11 +31,15 @@ protobuf {
         id("grpc") {
             artifact = "io.grpc:protoc-gen-grpc-java:${rootProject.extra["grpc-version"]}"
         }
+        id("myddd-grpc") {
+            artifact = "org.myddd.plugin:myddd-grpc-gradle-plugin:0.1.0"
+        }
     }
     generateProtoTasks {
         all().forEach {
             it.plugins {
                 id("grpc")
+                id("myddd-grpc")
             }
         }
     }

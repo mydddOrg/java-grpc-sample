@@ -4,7 +4,6 @@ import com.google.protobuf.Empty;
 import org.myddd.domain.IDGenerate;
 import org.myddd.java.distributed.api.DistributedIdApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 import javax.inject.Inject;
