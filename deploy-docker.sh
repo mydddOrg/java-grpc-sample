@@ -1,11 +1,11 @@
 #!/bin/sh
 
-docker tag java-grpc-sample-distributed:2 lingen/java-grpc-sample-distributed:2
-docker push lingen/java-grpc-sample-distributed:2
+tag=$1
+docker tag java-grpc-sample-distributed:"${tag}" lingen/java-grpc-sample-distributed:"${tag}"
+docker push lingen/java-grpc-sample-distributed:"${tag}"
 
-docker tag java-grpc-sample-user:2 lingen/java-grpc-sample-user:2
-docker push lingen/java-grpc-sample-user:2
+docker tag java-grpc-sample-user:"${tag}" lingen/java-grpc-sample-user:"${tag}"
+docker push lingen/java-grpc-sample-user:"${tag}"
 
-
-docker tag java-grpc-sample-rest:2 lingen/java-grpc-sample-rest:2
-docker push lingen/java-grpc-sample-rest:2
+docker tag java-grpc-sample-rest:"${tag}" lingen/java-grpc-sample-rest:"${tag}"
+docker push lingen/java-grpc-sample-rest:"${tag}"
