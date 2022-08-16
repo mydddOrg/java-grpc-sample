@@ -11,11 +11,7 @@ version = rootProject.extra["projectVersion"]!!
 
 
 dependencies {
-    api("io.grpc:grpc-protobuf:${rootProject.extra["grpc-version"]}")
-    api("io.grpc:grpc-stub:${rootProject.extra["grpc-version"]}")
-
-    implementation("org.myddd:myddd-utils:${rootProject.extra["myddd_version"]}")
-    implementation("javax.annotation:javax.annotation-api:${rootProject.extra["annotation-api"]}")
+    api("org.myddd:myddd-grpc:${rootProject.extra["myddd_version"]}")
 }
 
 sourceSets.main {

@@ -11,7 +11,7 @@ buildscript {
 plugins {
     java
     `java-library`
-    id("org.springframework.boot") version "2.7.1"
+    id("org.springframework.boot") version "2.7.2"
     id("jacoco")
     id("org.sonarqube") version "3.3"
 }
@@ -20,9 +20,9 @@ val projectVersion = "1.0.0-SNAPSHOT"
 
 extra["projectVersion"] = projectVersion
 extra["slf4jVersion"] = "1.7.36"
-extra["spring.boot"] = "2.7.1"
+extra["spring.boot"] = "2.7.2"
 extra["junit.version"] = "5.8.2"
-extra["myddd_version"] = "0.3.2-ALPHA"
+extra["myddd_version"] = "0.3.4-ALPHA"
 extra["h2_version"] = "2.1.214"
 extra["protobuf-java"] = "3.19.1"
 extra["annotation-api"] = "1.3.2"

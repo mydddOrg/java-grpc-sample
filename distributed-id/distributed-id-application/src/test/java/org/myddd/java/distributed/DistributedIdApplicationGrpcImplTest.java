@@ -4,7 +4,6 @@ import com.google.protobuf.Empty;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.Server;
-import io.grpc.ServerBuilder;
 import io.grpc.netty.NettyServerBuilder;
 import org.junit.jupiter.api.*;
 import org.myddd.domain.InstanceFactory;

@@ -2,6 +2,7 @@ package org.myddd.java.application;
 
 import io.grpc.stub.StreamObserver;
 import org.myddd.domain.InstanceFactory;
+import org.myddd.grpc.GrpcRunner;
 import org.myddd.java.user.api.*;
 
 import java.util.Objects;
@@ -20,14 +21,11 @@ public class UserApplicationGrpcImpl extends UserApplicationGrpc.UserApplication
 
     @Override
     public void createUser(UserDto request, StreamObserver<UserDto> responseObserver) {
-        var created = getUserApplication().createUser(request);
-        responseObserver.onNext(created);
-        responseObserver.onCompleted();
+        GrpcRunner.run(responseObserver,()->getUserApplication().createUser(request));
     }
 
     @Override
     public void searchUser(SearchUserDto request, StreamObserver<PageUserDto> responseObserver) {
-        responseObserver.onNext(getUserApplication().searchUser(request));
-        responseObserver.onCompleted();
+        GrpcRunner.run(responseObserver,()->getUserApplication().searchUser(request));
     }
 }

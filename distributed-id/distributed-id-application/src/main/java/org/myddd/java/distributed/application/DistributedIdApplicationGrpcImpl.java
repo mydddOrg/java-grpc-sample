@@ -5,6 +5,7 @@ import com.google.protobuf.Int64Value;
 import com.google.protobuf.StringValue;
 import io.grpc.stub.StreamObserver;
 import org.myddd.domain.InstanceFactory;
+import org.myddd.grpc.GrpcRunner;
 import org.myddd.java.distributed.api.DistributedIdApplication;
 import org.myddd.java.distributed.api.DistributedIdApplicationGrpc;
 
@@ -26,18 +27,11 @@ public class DistributedIdApplicationGrpcImpl extends DistributedIdApplicationGr
 
     @Override
     public void distributedId(Empty request, StreamObserver<Int64Value> responseObserver) {
-        responseObserver.onNext(getDistributedIdApplication().distributedId(Empty.getDefaultInstance()));
-        responseObserver.onCompleted();
+        GrpcRunner.run(responseObserver,()->getDistributedIdApplication().distributedId(request));
     }
 
     @Override
     public void hostIp(Empty request, StreamObserver<StringValue> responseObserver) {
-        try {
-            var hostIp = StringValue.of(Inet4Address.getLocalHost().getHostAddress());
-            responseObserver.onNext(hostIp);
-        } catch (UnknownHostException e) {
-            responseObserver.onError(e);
-        }
-        responseObserver.onCompleted();
+        GrpcRunner.run(responseObserver,()->getDistributedIdApplication().hostIp(request));
     }
 }
