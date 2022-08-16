@@ -7,6 +7,12 @@ services:
       mode: replicated
       replicas: 1
       endpoint_mode: dnsrr
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8080/healthy" ]
+      interval: 1m
+      timeout: 10s
+      retries: 3
+      start_period: 40s
     networks:
       - java-grpc
   user:
@@ -15,13 +21,24 @@ services:
       mode: replicated
       replicas: 2
       endpoint_mode: dnsrr
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8080/healthy" ]
+      interval: 1m
+      timeout: 10s
+      retries: 3
+      start_period: 40s
     networks:
       - java-grpc
   rest:
     image: lingen/java-grpc-sample-rest:2
     deploy:
       replicas: 2
-
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8080/healthy" ]
+      interval: 1m
+      timeout: 10s
+      retries: 3
+      start_period: 40s
     ports:
       - "8080:8080"
     networks:

@@ -24,6 +24,8 @@ dependencies {
     implementation("org.myddd:myddd-utils:${rootProject.extra["myddd_version"]}")
     implementation("org.myddd:myddd-domain:${rootProject.extra["myddd_version"]}")
     implementation("org.myddd:myddd-ioc-spring:${rootProject.extra["myddd_version"]}")
+    implementation("org.myddd.commons:healthy:${rootProject.extra["myddd_version"]}")
+
 
     implementation("javax.xml.bind:jaxb-api:2.3.0")
     implementation("com.sun.xml.bind:jaxb-impl:2.3.6")

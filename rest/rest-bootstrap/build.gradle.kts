@@ -20,8 +20,8 @@ dependencies {
     implementation("org.myddd:myddd-utils:${rootProject.extra["myddd_version"]}")
     implementation("org.myddd:myddd-domain:${rootProject.extra["myddd_version"]}")
     implementation("org.myddd:myddd-ioc-spring:${rootProject.extra["myddd_version"]}")
-
     implementation("org.myddd:myddd-rest-advice:${rootProject.extra["myddd_version"]}")
+    implementation("org.myddd.commons:healthy:${rootProject.extra["myddd_version"]}")
 
     implementation("io.grpc:grpc-netty:${rootProject.extra["grpc-version"]}")
     implementation("com.google.code.gson:gson:2.9.0")
