@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   distribute:
-    image: lingen/java-grpc-sample-distributed:${TAG}
+    image: 172.16.1.131:5000/java-grpc-sample-distributed:${TAG}
     deploy:
       mode: replicated
       replicas: 1
@@ -16,7 +16,7 @@ services:
     networks:
       - java-grpc
   user:
-    image: lingen/java-grpc-sample-user:${TAG}
+    image: 172.16.1.131:5000/java-grpc-sample-user:${TAG}
     deploy:
       mode: replicated
       replicas: 2
@@ -30,7 +30,7 @@ services:
     networks:
       - java-grpc
   rest:
-    image: lingen/java-grpc-sample-rest:${TAG}
+    image: 172.16.1.131:5000/java-grpc-sample-rest:${TAG}
     deploy:
       replicas: 2
     healthcheck:
