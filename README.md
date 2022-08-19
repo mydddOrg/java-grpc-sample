@@ -9,4 +9,4 @@
 - [x] 使用Jenkins进行全自动构建流程
 - [x] 使用Fluentd实现分布式日志收集，结合elasticsearch进行日志处理
 - [x] 基于open telemetry + jaeger的链路追踪实现
-- [ ] 分布式事务？
+- [x] 使用prometheus实现度量与告警
