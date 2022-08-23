@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM java-base:1
+FROM lingen/java-base:1
 WORKDIR /app
 COPY ./grpc-bootstrap-1.0.0-SNAPSHOT.jar  .
 ENV OTEL_SERVICE_NAME=user

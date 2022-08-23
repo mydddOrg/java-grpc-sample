@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: distributed
+  labels:
+    app: distributed
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: distributed
+  template:
+    metadata:
+      labels:
+        app: distributed
+    spec:
+      containers:
+        - name: distributed
+          image: lingen/java-grpc-sample-distributed:1
+          ports:
+            - containerPort: 8080
